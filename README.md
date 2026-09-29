@@ -1,13 +1,8 @@
 # Disclaimer: everything is built off a kaggle dataset, <a href="https://www.kaggle.com/datasets/priyamchoksi/credit-card-transactions-dataset?resource=download">Check it out Here</a>
-
-# -Customer-segmentation-and-analysis
-End-to-end data pipeline clustering fake 1.85M credit card transactions using PostgreSQL, Python (K-Means), and Tableau to identify actionable user personas.
-
-
 # Fintech Customer Segmentation & Transaction Analysis
 
 ## Overview
-This project processes and analyzes 1.85 million raw credit card transactions to identify distinct customer behavioral segments. By bridging data engineering with unsupervised machine learning, this pipeline transforms high-volume operational logs into actionable business personas. The resulting Tableau dashboard empowers stakeholders to balance system load prioritization with strategic revenue generation.
+This project processes and analyzes fake 1.85 million raw credit card transactions to identify distinct customer behavioral segments. By bridging data engineering with unsupervised machine learning, this pipeline transforms high-volume operational logs into actionable business personas. The resulting Tableau dashboard empowers stakeholders to balance system load prioritization with strategic revenue generation.
 
 ## Architecture & Tech Stack
 * **Infrastructure:** Docker, PostgreSQL
@@ -22,11 +17,9 @@ This project processes and analyzes 1.85 million raw credit card transactions to
 
 ## Key Personas Identified
 * **The High-Ticket / Outliers (Cluster 0):** Low transaction frequency (<100) paired with massive average ticket sizes ($600+). Represents B2B purchasing or luxury accounts.
-* **Daily Users (Cluster 1):** Massive swipe volume (~2,600 transactions) with small ticket sizes (~$50). Drives steady interchange revenue and high system load.
-* **Everyday Spenders (Cluster 2):** Healthy transaction cadence (~1,700 transactions) with typical consumer ticket sizes (~$50).
-* **The responsible spenders (Cluster 3):** Low volume (~750 transactions) and small amounts (~$50). High potential for churn or activation campaigns.
-* <img width="699" height="691" alt="image" src="https://github.com/user-attachments/assets/033ddcbe-d4b5-4593-a367-7374fb5e2fd1" />
-
+* **Daily Users (Cluster 1):** Massive swipe volume (~2,600 transactions) with small ticket sizes ($50). Drives steady interchange revenue and high system load.
+* **Everyday Spenders (Cluster 2):** Healthy transaction cadence (~1,700 transactions) with typical consumer ticket sizes ($50).
+* **The Responsible Spenders (Cluster 3):** Low volume (~750 transactions) and small amounts ($50). High potential for churn or activation campaigns.
 
 ## Strategic Business Impact
 * **Product Marketing:** Identifies the "Occasional Cardholder" segment as prime targets for tailored cashback activation campaigns to increase daily active usage.
@@ -34,9 +27,7 @@ This project processes and analyzes 1.85 million raw credit card transactions to
 * **System Operations:** Correlates transaction volume to revenue, allowing engineering teams to prioritize server load scaling based on the peak activity hours of the "High-Frequency Daily Users."
 
 ## Repository Structure
-* `scripts/`
-  * `01_db_setup.py`: SQLAlchemy script connecting to Docker PostgreSQL and inserting the raw CSV data.
-  * `02_segmentation_model.ipynb`: Jupyter Notebook detailing the Pandas aggregations, K-Means clustering, and CSV export.
+* `segmentation_model.ipynb`: A single Jupyter Notebook executing the full pipeline, including library installations, loading the raw CSV, pushing the data to PostgreSQL, applying K-Means clustering, and exporting the aggregated summary files[cite: 6].
 * `dashboards/`
   * `Customer_Risk_Value_Profile.twbx`: Packaged Tableau workbook containing the executive visualizations.
 * `data/`
@@ -46,6 +37,4 @@ This project processes and analyzes 1.85 million raw credit card transactions to
 1. Clone this repository.
 2. Spin up the local database using Docker:
    `docker run --name fintech-postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=credit_card_db -p 5432:5432 -d postgres:latest`
-3. Install required Python packages:
-   `pip install pandas scikit-learn sqlalchemy psycopg[binary]`
-4. Run the Jupyter Notebook to generate the customer cluster files.
+3. Open and run all cells in `segmentation_model.ipynb` to install the required packages (`pandas`, `scikit-learn`, `sqlalchemy`, `psycopg[binary]`), load the database, run the clustering model, and generate the CSV exports[cite: 6].
