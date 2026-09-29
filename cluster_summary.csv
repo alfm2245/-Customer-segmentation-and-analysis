@@ -1,0 +1,5 @@
+segment_cluster,customer_count,avg_transactions,avg_total_spend,avg_ticket_size
+0,153,2605.64,195251.61,76.03
+1,408,741.63,52028.25,72.41
+2,72,9.97,6071.28,611.62
+3,350,1699.17,113383.65,68.27
