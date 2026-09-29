@@ -1,3 +1,5 @@
+# Disclaimer: everything is built off a kaggle dataset, <a href="https://www.kaggle.com/datasets/priyamchoksi/credit-card-transactions-dataset?resource=download">Check it out Here</a>
+
 # -Customer-segmentation-and-analysis
 End-to-end data pipeline clustering fake 1.85M credit card transactions using PostgreSQL, Python (K-Means), and Tableau to identify actionable user personas.
 
@@ -20,9 +22,11 @@ This project processes and analyzes 1.85 million raw credit card transactions to
 
 ## Key Personas Identified
 * **The High-Ticket / Outliers (Cluster 0):** Low transaction frequency (<100) paired with massive average ticket sizes ($600+). Represents B2B purchasing or luxury accounts.
-* **The High-Frequency Daily Users (Cluster 1):** Massive swipe volume (~2,600 transactions) with small ticket sizes (~$50). Drives steady interchange revenue and high system load.
-* **The Moderate Everyday Spenders (Cluster 2):** Healthy transaction cadence (~1,700 transactions) with typical consumer ticket sizes (~$50).
-* **The Occasional Cardholders (Cluster 3):** Low volume (~750 transactions) and small amounts (~$50). High potential for churn or activation campaigns.
+* **Daily Users (Cluster 1):** Massive swipe volume (~2,600 transactions) with small ticket sizes (~$50). Drives steady interchange revenue and high system load.
+* **Everyday Spenders (Cluster 2):** Healthy transaction cadence (~1,700 transactions) with typical consumer ticket sizes (~$50).
+* **The responsible spenders (Cluster 3):** Low volume (~750 transactions) and small amounts (~$50). High potential for churn or activation campaigns.
+* <img width="699" height="691" alt="image" src="https://github.com/user-attachments/assets/033ddcbe-d4b5-4593-a367-7374fb5e2fd1" />
+
 
 ## Strategic Business Impact
 * **Product Marketing:** Identifies the "Occasional Cardholder" segment as prime targets for tailored cashback activation campaigns to increase daily active usage.
